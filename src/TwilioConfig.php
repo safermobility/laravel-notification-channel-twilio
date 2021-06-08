@@ -17,7 +17,7 @@ class TwilioConfig
 
     public function enabled()
     {
-        return $this->config['enabled'];
+        return $this->config['enabled'] ?? true;
     }
 
     public function usingUsernamePasswordAuth(): bool
