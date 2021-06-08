@@ -46,6 +46,8 @@ class TwilioChannelTest extends MockeryTestCase
             'enabled' => false,
         ]);
 
+        $this->dispatcher->shouldNotReceive('dispatch');
+
         $result = $this->channel->send($notifiable, $notification);
 
         $this->assertNull($result);
