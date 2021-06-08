@@ -43,6 +43,10 @@ class TwilioChannel
      */
     public function send($notifiable, Notification $notification)
     {
+        if (! $this->twilio->config->enabled()) {
+            return;
+        }
+
         try {
             $to = $this->getTo($notifiable, $notification);
             $message = $notification->toTwilio($notifiable);
