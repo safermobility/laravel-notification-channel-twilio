@@ -82,7 +82,7 @@ class TwilioChannel
     /**
      * Check if twilio is enabled.
      *
-     * @return boolean
+     * @return bool
      */
     protected function isEnabled()
     {
