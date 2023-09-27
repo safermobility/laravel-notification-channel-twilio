@@ -19,6 +19,13 @@ abstract class TwilioMessage
     public $from;
 
     /**
+     * The phone number the message should be sent to. (Override the existing To number otherwise optional.)
+     *
+     * @var string
+     */
+    public $to;
+
+    /**
      * @var null|string
      */
     public $statusCallback;
@@ -82,6 +89,29 @@ abstract class TwilioMessage
     public function getFrom(): ?string
     {
         return $this->from;
+    }
+
+    /**
+     * Set the phone number the message should be sent to.
+     *
+     * @param  string  $to
+     * @return $this
+     */
+    public function to(string $to): self
+    {
+        $this->to = $to;
+
+        return $this;
+    }
+
+    /**
+     * Get the to address.
+     *
+     * @return string|null
+     */
+    public function getTo(): ?string
+    {
+        return $this->to;
     }
 
     /**
