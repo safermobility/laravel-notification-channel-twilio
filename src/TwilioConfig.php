@@ -15,6 +15,11 @@ class TwilioConfig
         $this->config = $config;
     }
 
+    public function enabled()
+    {
+        return $this->config['enabled'] ?? true;
+    }
+
     public function usingTokenAuth(): bool
     {
         return $this->getAuthToken() !== null && $this->getAccountSid() !== null;

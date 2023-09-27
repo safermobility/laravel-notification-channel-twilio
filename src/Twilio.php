@@ -3,6 +3,7 @@
 namespace NotificationChannels\Twilio;
 
 use NotificationChannels\Twilio\Exceptions\CouldNotSendNotification;
+use Throwable;
 use Twilio\Exceptions\TwilioException;
 use Twilio\Rest\Api\V2010\Account\CallInstance;
 use Twilio\Rest\Api\V2010\Account\MessageInstance;
@@ -104,7 +105,12 @@ class Twilio
             ]);
         }
 
-        return $this->twilioService->messages->create($to, $params);
+        try {
+            return $this->twilioService->messages->create($to, $params);
+        } catch (Throwable $e) {
+            report($e);
+            throw CouldNotSendNotification::serviceRespondedWithAnError($e, 'Fail');
+        }
     }
 
     /**
