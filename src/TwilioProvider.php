@@ -37,12 +37,8 @@ class TwilioProvider extends ServiceProvider implements DeferrableProvider
             /** @var TwilioConfig $config */
             $config = $app->make(TwilioConfig::class);
 
-            if ($config->usingUsernamePasswordAuth()) {
-                return new TwilioService($config->getUsername(), $config->getPassword(), $config->getAccountSid());
-            }
-
             if ($config->usingTokenAuth()) {
-                return new TwilioService($config->getAccountSid(), $config->getAuthToken());
+                return new TwilioService($config->getSid(), $config->getAuthToken(), $config->getAccountSid());
             }
 
             throw InvalidConfigException::missingConfig();

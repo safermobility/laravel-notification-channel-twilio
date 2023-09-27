@@ -37,10 +37,9 @@ composer require laravel-notification-channels/twilio
 Add your Twilio Account SID, Auth Token, and From Number (optional) to your `.env`:
 
 ```dotenv
-TWILIO_USERNAME=XYZ # optional when using auth token
-TWILIO_PASSWORD=ZYX # optional when using auth token
-TWILIO_AUTH_TOKEN=ABCD # optional when using username and password
+TWILIO_AUTH_TOKEN=ABCD
 TWILIO_ACCOUNT_SID=1234 # always required
+TWILIO_SID=5678 # allow using separate access tokens
 TWILIO_FROM=100000000 # optional default from
 TWILIO_ALPHA_SENDER=HELLO # optional
 TWILIO_DEBUG_TO=23423423423 # Set a number that call calls/messages should be routed to for debugging
