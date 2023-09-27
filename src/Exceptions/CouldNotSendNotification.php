@@ -30,4 +30,23 @@ class CouldNotSendNotification extends \Exception
             method or a phone_number attribute to your notifiable.'
         );
     }
+
+    public static function missingAlphaNumericSender(): self
+    {
+        return new static(
+            'Notification was not sent. Missing `alphanumeric_sender` in config'
+        );
+    }
+
+    public static function serviceRespondedWithAnError($exception, $message = null)
+    {
+        return new static('Could Not Send SMS : '.$exception->getMessage() . ' message: ' . $message);
+    }
+
+    public static function invalidAuth(): self
+    {
+        return new static(
+            'The Twilio Auth failed.'
+        );
+    }
 }

@@ -2,6 +2,7 @@
 
 return [
     'enabled' => (bool) env('TWILIO_ENABLED', true),
+
     'auth_token' => env('TWILIO_AUTH_TOKEN'),
     'account_sid' => env('TWILIO_ACCOUNT_SID'),
     'sid' => env('TWILIO_SID', env('TWILIO_ACCOUNT_SID')),
