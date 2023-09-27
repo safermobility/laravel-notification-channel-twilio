@@ -34,9 +34,9 @@ class TwilioProviderTest extends IntegrationTestCase
     /** @test */
     public function it_can_create_the_application_with_sid()
     {
-        $this->app['config']->set('twilio-notification-channel.username', 'test');
-        $this->app['config']->set('twilio-notification-channel.password', 'password');
-        $this->app['config']->set('twilio-notification-channel.account_sid', '1234');
+        $this->app['config']->set('twilio-notification-channel.account_sid', 'AC1234');
+        $this->app['config']->set('twilio-notification-channel.auth_token', 'SECRET');
+        $this->app['config']->set('twilio-notification-channel.sid', 'SK1234');
 
         $this->assertInstanceOf(TwilioChannel::class, $this->app->get(TwilioChannel::class));
     }

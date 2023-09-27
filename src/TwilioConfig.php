@@ -13,11 +13,6 @@ class TwilioConfig
         return $this->config['enabled'] ?? true;
     }
 
-    public function usingUsernamePasswordAuth(): bool
-    {
-        return $this->getUsername() !== null && $this->getPassword() !== null && $this->getAccountSid() !== null;
-    }
-
     public function usingTokenAuth(): bool
     {
         return $this->getAuthToken() !== null && $this->getAccountSid() !== null;
@@ -28,19 +23,14 @@ class TwilioConfig
         return $this->config['auth_token'] ?? null;
     }
 
-    public function getUsername(): ?string
-    {
-        return $this->config['username'] ?? null;
-    }
-
-    public function getPassword(): ?string
-    {
-        return $this->config['password'] ?? null;
-    }
-
     public function getAccountSid(): ?string
     {
         return $this->config['account_sid'] ?? null;
+    }
+
+    public function getSid(): ?string
+    {
+        return $this->config['sid'] ?? null;
     }
 
     public function getFrom(): ?string
