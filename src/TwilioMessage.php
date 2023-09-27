@@ -14,6 +14,11 @@ abstract class TwilioMessage
     public ?string $statusCallbackMethod = null;
 
     /**
+     * The phone number the message should be sent to. (Override the existing To number otherwise optional.)
+     */
+    public ?string $to = null;
+
+    /**
      * Create a new message instance.
      */
     public function __construct(
@@ -54,6 +59,24 @@ abstract class TwilioMessage
     public function getFrom(): ?string
     {
         return $this->from;
+    }
+
+    /**
+     * Set the phone number the message should be sent to.
+     */
+    public function to(string $to): self
+    {
+        $this->to = $to;
+
+        return $this;
+    }
+
+    /**
+     * Get the to address.
+     */
+    public function getTo(): ?string
+    {
+        return $this->to;
     }
 
     /**

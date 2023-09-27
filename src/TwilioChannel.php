@@ -28,9 +28,7 @@ class TwilioChannel
         }
 
         try {
-            $to = $this->getTo($notifiable, $notification);
-            $message = $this->getMessage($notifiable, $notification);
-            $useSender = $this->canReceiveAlphanumericSender($notifiable);
+            $message = $notification->toTwilio($notifiable);
 
             if (is_string($message)) {
                 $message = new TwilioSmsMessage($message);
@@ -38,6 +36,14 @@ class TwilioChannel
 
             if (! $message instanceof TwilioMessage) {
                 throw CouldNotSendNotification::invalidMessageObject($message);
+            }
+
+            $to = $this->getTo($notifiable, $notification, $message);
+            $useSender = $this->canReceiveAlphanumericSender($notifiable);
+
+            // Suppress notification if notifier address is found to be NULL
+            if($to === null) {
+                return;
             }
 
             return $this->twilio->sendMessage($message, $to, $useSender);
@@ -60,16 +66,6 @@ class TwilioChannel
     }
 
     /**
-     * Get the message to send.
-     *
-     * @return mixed
-     */
-    protected function getMessage(mixed $notifiable, Notification $notification)
-    {
-        return $notification->toTwilio($notifiable);
-    }
-
-    /**
      * Check if twilio is enabled.
      */
     protected function isEnabled(): bool
@@ -80,14 +76,18 @@ class TwilioChannel
     /**
      * Get the address to send a notification to.
      *
-     * @param  mixed  $notifiable
-     * @param  Notification|null  $notification
+     * @param mixed $notifiable
+     * @param Notification|null $notification
+     * @param TwilioMessage $message
      *
      * @return mixed
      * @throws CouldNotSendNotification
      */
-    protected function getTo($notifiable, $notification = null)
+    protected function getTo($notifiable, $notification = null, $message = null)
     {
+        if ($message->getTo()) {
+            return $message->getTo();
+        }
         if ($notifiable->routeNotificationFor(self::class, $notification)) {
             return $notifiable->routeNotificationFor(self::class, $notification);
         }
@@ -103,7 +103,6 @@ class TwilioChannel
 
     /**
      * Get the alphanumeric sender.
-     *
      *
      * @return mixed|null
      * @throws CouldNotSendNotification
