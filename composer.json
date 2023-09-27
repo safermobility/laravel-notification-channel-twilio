@@ -1,5 +1,5 @@
 {
-    "name": "laravel-notification-channels/twilio",
+    "name": "safermobility/laravel-notification-channel-twilio",
     "description": "Provides Twilio notification channel for Laravel",
     "keywords": [
         "laravel",
@@ -11,29 +11,9 @@
     ],
     "license": "MIT",
     "support": {
-        "issues": "https://github.com/laravel-notification-channels/twilio/issues",
-        "source": "https://github.com/laravel-notification-channels/twilio"
+        "issues": "https://github.com/safermobility/laravel-notification-channel-twilio/issues",
+        "source": "https://github.com/safermobility/laravel-notification-channel-twilio"
     },
-    "authors": [
-        {
-            "name": "Philip Iezzi",
-            "email": "pipo@onlime.ch",
-            "homepage": "https://github.com/onlime",
-            "role": "Developer"
-        },
-        {
-            "name": "Gregorio Hernández Caso",
-            "email": "gregoriohc@gmail.com",
-            "homepage": "https://github.com/gregoriohc",
-            "role": "Developer"
-        },
-        {
-            "name": "atymic",
-            "email": "atymicq@gmail.com",
-            "homepage": "https://atymic.dev",
-            "role": "Developer"
-        }
-    ],
     "require": {
         "php": "^8.2",
         "twilio/sdk": "^7.16 || ^8.3",
