@@ -62,7 +62,7 @@ class TwilioChannel
             $useSender = $this->canReceiveAlphanumericSender($notifiable);
 
             // Suppress notification if notifier address is found to be NULL
-            if($to === null) {
+            if (!$to) {
                 return;
             }
 
@@ -124,7 +124,7 @@ class TwilioChannel
             return $notifiable->phone_number;
         }
 
-        throw CouldNotSendNotification::invalidReceiver();
+        return null;
     }
 
     /**
