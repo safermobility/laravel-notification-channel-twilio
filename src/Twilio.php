@@ -25,9 +25,6 @@ class Twilio
     /**
      * Send a TwilioMessage to the a phone number.
      *
-     * @param TwilioMessage $message
-     * @param string|null $to
-     * @param bool $useAlphanumericSender
      *
      * @return mixed
      * @throws TwilioException
@@ -53,10 +50,7 @@ class Twilio
     /**
      * Send an sms message using the Twilio Service.
      *
-     * @param TwilioSmsMessage $message
-     * @param string|null $to
      *
-     * @return MessageInstance
      * @throws CouldNotSendNotification
      * @throws TwilioException
      */
@@ -64,7 +58,7 @@ class Twilio
     {
         $debugTo = $this->config->getDebugTo();
 
-        if (!empty($debugTo)) {
+        if (! empty($debugTo)) {
             $to = $debugTo;
         }
 
@@ -77,7 +71,7 @@ class Twilio
         }
 
         if ($this->config->isShortenUrlsEnabled()) {
-            $params['ShortenUrls'] = "true";
+            $params['ShortenUrls'] = 'true';
         }
 
         if ($from = $this->getFrom($message)) {
@@ -110,10 +104,7 @@ class Twilio
     /**
      * Make a call using the Twilio Service.
      *
-     * @param TwilioCallMessage $message
-     * @param string|null $to
      *
-     * @return CallInstance
      * @throws TwilioException
      * @throws CouldNotSendNotification
      */
@@ -151,9 +142,6 @@ class Twilio
 
     /**
      * Get the from address from message, or config.
-     *
-     * @param TwilioMessage $message
-     * @return string|null
      */
     protected function getFrom(TwilioMessage $message): ?string
     {
@@ -162,9 +150,6 @@ class Twilio
 
     /**
      * Get the messaging service SID from message, or config.
-     *
-     * @param TwilioSmsMessage $message
-     * @return string|null
      */
     protected function getMessagingServiceSid(TwilioSmsMessage $message): ?string
     {
@@ -173,8 +158,6 @@ class Twilio
 
     /**
      * Get the alphanumeric sender from config, if one exists.
-     *
-     * @return string|null
      */
     protected function getAlphanumericSender(): ?string
     {
@@ -182,10 +165,9 @@ class Twilio
     }
 
     /**
-     * @param array $params
-     * @param TwilioMessage $message
-     * @param array $optionalParams
-     * @return Twilio
+     * @param  array  $params
+     * @param  TwilioMessage  $message
+     * @param  array  $optionalParams
      */
     protected function fillOptionalParams(&$params, $message, $optionalParams): self
     {

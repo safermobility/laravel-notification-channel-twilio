@@ -57,7 +57,7 @@ class IntegrationTest extends MockeryTestCase
             'body' => 'Message text',
         ]);
 
-        $channel->send(new NotifiableWithAttribute(), $this->notification);
+        $channel->send(new NotifiableWithAttribute, $this->notification);
     }
 
     /** @test */
@@ -79,7 +79,7 @@ class IntegrationTest extends MockeryTestCase
             'messagingServiceSid' => '0123456789',
         ]);
 
-        $channel->send(new NotifiableWithAttribute(), $this->notification);
+        $channel->send(new NotifiableWithAttribute, $this->notification);
     }
 
     /** @test */
@@ -101,7 +101,7 @@ class IntegrationTest extends MockeryTestCase
             'ShortenUrls' => 'true',
         ]);
 
-        $channel->send(new NotifiableWithAttribute(), $this->notification);
+        $channel->send(new NotifiableWithAttribute, $this->notification);
     }
 
     /** @test */
@@ -122,7 +122,7 @@ class IntegrationTest extends MockeryTestCase
             'body' => 'Message text',
         ]);
 
-        $channel->send(new NotifiableWithAlphanumericSender(), $this->notification);
+        $channel->send(new NotifiableWithAlphanumericSender, $this->notification);
     }
 
     /** @test */
@@ -141,7 +141,7 @@ class IntegrationTest extends MockeryTestCase
             'url' => 'http://example.com',
         ]);
 
-        $channel->send(new NotifiableWithAttribute(), $this->notification);
+        $channel->send(new NotifiableWithAttribute, $this->notification);
     }
 
     protected function smsMessageWillBeSentToTwilioWith(...$args)

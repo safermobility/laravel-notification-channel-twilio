@@ -10,7 +10,7 @@ class TwilioMmsMessageTest extends TwilioMessageTest
     {
         parent::setUp();
 
-        $this->message = new TwilioMmsMessage();
+        $this->message = new TwilioMmsMessage;
     }
 
     /** @test */

@@ -14,9 +14,7 @@ class TwilioProvider extends ServiceProvider implements DeferrableProvider
     /**
      * Bootstrap the application services.
      */
-    public function boot()
-    {
-    }
+    public function boot() {}
 
     /**
      * Register the application services.
@@ -65,8 +63,6 @@ class TwilioProvider extends ServiceProvider implements DeferrableProvider
 
     /**
      * Get the services provided by the provider.
-     *
-     * @return array
      */
     public function provides(): array
     {

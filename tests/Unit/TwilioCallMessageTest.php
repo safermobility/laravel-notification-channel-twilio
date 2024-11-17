@@ -13,7 +13,7 @@ class TwilioCallMessageTest extends TwilioMessageTest
     {
         parent::setUp();
 
-        $this->message = new TwilioCallMessage();
+        $this->message = new TwilioCallMessage;
     }
 
     /** @test */

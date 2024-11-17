@@ -22,9 +22,6 @@ class TwilioChannel
 
     /**
      * TwilioChannel constructor.
-     *
-     * @param Twilio $twilio
-     * @param Dispatcher $events
      */
     public function __construct(Twilio $twilio, Dispatcher $events)
     {
@@ -35,8 +32,7 @@ class TwilioChannel
     /**
      * Send the given notification.
      *
-     * @param mixed $notifiable
-     * @param Notification $notification
+     * @param  mixed  $notifiable
      *
      * @return mixed
      * @throws Exception
@@ -82,8 +78,7 @@ class TwilioChannel
     /**
      * Get the message to send.
      *
-     * @param mixed $notifiable
-     * @param Notification $notification
+     * @param  mixed  $notifiable
      *
      * @return mixed
      */
@@ -109,8 +104,8 @@ class TwilioChannel
     /**
      * Get the address to send a notification to.
      *
-     * @param mixed $notifiable
-     * @param Notification|null $notification
+     * @param  mixed  $notifiable
+     * @param  Notification|null  $notification
      *
      * @return mixed
      * @throws CouldNotSendNotification
@@ -133,7 +128,6 @@ class TwilioChannel
     /**
      * Get the alphanumeric sender.
      *
-     * @param $notifiable
      *
      * @return mixed|null
      * @throws CouldNotSendNotification

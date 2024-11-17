@@ -12,7 +12,6 @@ class TwilioMmsMessage extends TwilioSmsMessage
     /**
      * Set the message media url.
      *
-     * @param string $url
      * @return $this
      */
     public function mediaUrl(string $url): self

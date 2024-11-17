@@ -246,7 +246,7 @@ class TwilioTest extends MockeryTestCase
         $this->expectException(CouldNotSendNotification::class);
         $this->expectExceptionMessage('Notification was not sent. Message object class');
 
-        $this->twilio->sendMessage(new InvalidMessage(), null);
+        $this->twilio->sendMessage(new InvalidMessage, null);
     }
 
     /** @test */
@@ -292,6 +292,4 @@ class TwilioTest extends MockeryTestCase
     }
 }
 
-class InvalidMessage extends TwilioMessage
-{
-}
+class InvalidMessage extends TwilioMessage {}

@@ -30,7 +30,6 @@ abstract class TwilioMessage
 
     /**
      * Create a message object.
-     * @param string $content
      * @return static
      */
     public static function create(string $content = ''): self
@@ -40,8 +39,6 @@ abstract class TwilioMessage
 
     /**
      * Create a new message instance.
-     *
-     * @param  string $content
      */
     public function __construct(string $content = '')
     {
@@ -51,7 +48,6 @@ abstract class TwilioMessage
     /**
      * Set the message content.
      *
-     * @param  string $content
      * @return $this
      */
     public function content(string $content): self
@@ -64,7 +60,6 @@ abstract class TwilioMessage
     /**
      * Set the phone number the message should be sent from.
      *
-     * @param  string $from
      * @return $this
      */
     public function from(string $from): self
@@ -76,8 +71,6 @@ abstract class TwilioMessage
 
     /**
      * Get the from address.
-     *
-     * @return string|null
      */
     public function getFrom(): ?string
     {
@@ -87,7 +80,6 @@ abstract class TwilioMessage
     /**
      * Set the status callback.
      *
-     * @param string $statusCallback
      * @return $this
      */
     public function statusCallback(string $statusCallback): self
@@ -100,7 +92,6 @@ abstract class TwilioMessage
     /**
      * Set the status callback request method.
      *
-     * @param string $statusCallbackMethod
      * @return $this
      */
     public function statusCallbackMethod(string $statusCallbackMethod): self
