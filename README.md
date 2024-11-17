@@ -70,6 +70,10 @@ Twilio recommends always using a [Messaging Service](https://www.twilio.com/docs
 
 Having issues with SMS? Check Twilio's [best practices](https://www.twilio.com/docs/sms/services/services-best-practices).
 
+## Upgrading from 3.x to 4.x
+
+We have dropped support for PHP < 8.2 and the minimum Laravel version is now 11. Other than that, there are no breaking changes.
+
 ## Upgrading from 2.x to 3.x
 
 If you're upgrading from version `2.x`, you'll need to make sure that your set environment variables match those above 
