@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace NotificationChannels\Twilio\Tests\Integration;
 
 use NotificationChannels\Twilio\TwilioProvider;
-use PHPUnit\Framework\TestCase;
+use Orchestra\Testbench\TestCase;
 
-abstract class BaseIntegrationTest extends TestCase
+class BaseIntegrationTest extends TestCase
 {
     protected function getPackageProviders($app)
     {
