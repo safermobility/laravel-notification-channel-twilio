@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'enabled' => env('TWILIO_ENABLED', true),
     'username' => env('TWILIO_USERNAME'), // optional when using auth token
     'password' => env('TWILIO_PASSWORD'), // optional when using auth token
     'auth_token' => env('TWILIO_AUTH_TOKEN'), // optional when using username and password
