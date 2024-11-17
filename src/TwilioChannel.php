@@ -10,34 +10,18 @@ use NotificationChannels\Twilio\Exceptions\CouldNotSendNotification;
 
 class TwilioChannel
 {
-    /**
-     * @var Twilio
-     */
-    protected $twilio;
-
-    /**
-     * @var Dispatcher
-     */
-    protected $events;
-
-    /**
-     * TwilioChannel constructor.
-     */
-    public function __construct(Twilio $twilio, Dispatcher $events)
-    {
-        $this->twilio = $twilio;
-        $this->events = $events;
-    }
+    public function __construct(
+        protected Twilio $twilio,
+        protected Dispatcher $events
+    ) {}
 
     /**
      * Send the given notification.
      *
-     * @param  mixed  $notifiable
-     *
      * @return mixed
      * @throws Exception
      */
-    public function send($notifiable, Notification $notification)
+    public function send(mixed $notifiable, Notification $notification)
     {
         if (! $this->isEnabled()) {
             return;
@@ -78,27 +62,19 @@ class TwilioChannel
     /**
      * Get the message to send.
      *
-     * @param  mixed  $notifiable
-     *
      * @return mixed
      */
-    protected function getMessage($notifiable, Notification $notification)
+    protected function getMessage(mixed $notifiable, Notification $notification)
     {
         return $notification->toTwilio($notifiable);
     }
 
     /**
      * Check if twilio is enabled.
-     *
-     * @return bool
      */
-    protected function isEnabled()
+    protected function isEnabled(): bool
     {
-        if (is_null($this->twilio->config)) {
-            return true;
-        }
-
-        return $this->twilio->config->enabled();
+        return $this->twilio->config->enabled() ?? true;
     }
 
     /**

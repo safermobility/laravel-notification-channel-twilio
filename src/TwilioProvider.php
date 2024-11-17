@@ -19,7 +19,7 @@ class TwilioProvider extends ServiceProvider implements DeferrableProvider
     /**
      * Register the application services.
      */
-    public function register()
+    public function register(): void
     {
         $this->mergeConfigFrom(__DIR__.'/../config/twilio-notification-channel.php', 'twilio-notification-channel');
 

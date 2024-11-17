@@ -5,32 +5,23 @@ namespace NotificationChannels\Twilio;
 abstract class TwilioMessage
 {
     /**
-     * The message content.
-     *
-     * @var string
-     */
-    public $content;
-
-    /**
      * The phone number the message should be sent from.
-     *
-     * @var string
      */
-    public $from;
+    public ?string $from = null;
+
+    public ?string $statusCallback = null;
+
+    public ?string $statusCallbackMethod = null;
 
     /**
-     * @var null|string
+     * Create a new message instance.
      */
-    public $statusCallback;
-
-    /**
-     * @var null|string
-     */
-    public $statusCallbackMethod;
+    public function __construct(
+        public string $content = ''
+    ) {}
 
     /**
      * Create a message object.
-     * @return static
      */
     public static function create(string $content = ''): self
     {
@@ -38,17 +29,7 @@ abstract class TwilioMessage
     }
 
     /**
-     * Create a new message instance.
-     */
-    public function __construct(string $content = '')
-    {
-        $this->content = $content;
-    }
-
-    /**
      * Set the message content.
-     *
-     * @return $this
      */
     public function content(string $content): self
     {
@@ -59,8 +40,6 @@ abstract class TwilioMessage
 
     /**
      * Set the phone number the message should be sent from.
-     *
-     * @return $this
      */
     public function from(string $from): self
     {
@@ -79,8 +58,6 @@ abstract class TwilioMessage
 
     /**
      * Set the status callback.
-     *
-     * @return $this
      */
     public function statusCallback(string $statusCallback): self
     {
@@ -91,8 +68,6 @@ abstract class TwilioMessage
 
     /**
      * Set the status callback request method.
-     *
-     * @return $this
      */
     public function statusCallbackMethod(string $statusCallbackMethod): self
     {

@@ -10,27 +10,18 @@ use Twilio\Rest\Client as TwilioService;
 
 class Twilio
 {
-    /** @var TwilioService */
-    protected $twilioService;
-
-    /** @var TwilioConfig */
-    public $config;
-
-    public function __construct(TwilioService $twilioService, TwilioConfig $config)
-    {
-        $this->twilioService = $twilioService;
-        $this->config = $config;
-    }
+    public function __construct(
+        protected TwilioService $twilioService,
+        public TwilioConfig $config
+    ) {}
 
     /**
-     * Send a TwilioMessage to the a phone number.
+     * Send a TwilioMessage to a phone number.
      *
-     *
-     * @return mixed
      * @throws TwilioException
      * @throws CouldNotSendNotification
      */
-    public function sendMessage(TwilioMessage $message, ?string $to, bool $useAlphanumericSender = false)
+    public function sendMessage(TwilioMessage $message, ?string $to, bool $useAlphanumericSender = false): CallInstance|MessageInstance
     {
         if ($message instanceof TwilioSmsMessage) {
             if ($useAlphanumericSender && $sender = $this->getAlphanumericSender()) {
@@ -164,12 +155,7 @@ class Twilio
         return $this->config->getAlphanumericSender();
     }
 
-    /**
-     * @param  array  $params
-     * @param  TwilioMessage  $message
-     * @param  array  $optionalParams
-     */
-    protected function fillOptionalParams(&$params, $message, $optionalParams): self
+    protected function fillOptionalParams(array &$params, TwilioMessage $message, array $optionalParams): self
     {
         foreach ($optionalParams as $optionalParam) {
             if ($message->$optionalParam) {

@@ -4,40 +4,19 @@ namespace NotificationChannels\Twilio;
 
 class TwilioSmsMessage extends TwilioMessage
 {
-    /**
-     * @var null|string
-     */
-    public $alphaNumSender;
+    public ?string $alphaNumSender = null;
 
-    /**
-     * @var null|string
-     */
-    public $messagingServiceSid;
+    public ?string $messagingServiceSid = null;
 
-    /**
-     * @var null|string
-     */
-    public $applicationSid;
+    public ?string $applicationSid = null;
 
-    /**
-     * @var null|bool
-     */
-    public $forceDelivery;
+    public ?bool $forceDelivery = null;
 
-    /**
-     * @var null|float
-     */
-    public $maxPrice;
+    public ?float $maxPrice = null;
 
-    /**
-     * @var null|bool
-     */
-    public $provideFeedback;
+    public ?bool $provideFeedback = null;
 
-    /**
-     * @var null|int
-     */
-    public $validityPeriod;
+    public ?int $validityPeriod = null;
 
     /**
      * Get the from address of this message.
@@ -57,8 +36,6 @@ class TwilioSmsMessage extends TwilioMessage
 
     /**
      * Set the messaging service SID.
-     *
-     * @return $this
      */
     public function messagingServiceSid(string $messagingServiceSid): self
     {
@@ -77,8 +54,6 @@ class TwilioSmsMessage extends TwilioMessage
 
     /**
      * Set the alphanumeric sender.
-     *
-     * @return $this
      */
     public function sender(string $sender): self
     {
@@ -89,8 +64,6 @@ class TwilioSmsMessage extends TwilioMessage
 
     /**
      * Set application SID for the message status callback.
-     *
-     * @return $this
      */
     public function applicationSid(string $applicationSid): self
     {
@@ -101,8 +74,6 @@ class TwilioSmsMessage extends TwilioMessage
 
     /**
      * Set force delivery (Deliver message without validation).
-     *
-     * @return $this
      */
     public function forceDelivery(bool $forceDelivery): self
     {
@@ -113,8 +84,6 @@ class TwilioSmsMessage extends TwilioMessage
 
     /**
      * Set the max price (in USD dollars).
-     *
-     * @return $this
      */
     public function maxPrice(float $maxPrice): self
     {
@@ -125,8 +94,6 @@ class TwilioSmsMessage extends TwilioMessage
 
     /**
      * Set the provide feedback option.
-     *
-     * @return $this
      */
     public function provideFeedback(bool $provideFeedback): self
     {
@@ -137,9 +104,6 @@ class TwilioSmsMessage extends TwilioMessage
 
     /**
      * Set the validity period (in seconds).
-     *
-     *
-     * @return $this
      */
     public function validityPeriod(int $validityPeriodSeconds): self
     {
