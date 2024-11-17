@@ -37,6 +37,23 @@ class TwilioChannelTest extends MockeryTestCase
     }
 
     /** @test */
+    public function it_will_not_send_a_message_if_not_enabled()
+    {
+        $notifiable = new Notifiable();
+        $notification = Mockery::mock(Notification::class);
+
+        $this->twilio->config = new TwilioConfig([
+            'enabled' => false,
+        ]);
+
+        $this->dispatcher->shouldNotReceive('dispatch');
+
+        $result = $this->channel->send($notifiable, $notification);
+
+        $this->assertNull($result);
+    }
+
+    /** @test */
     public function it_will_not_send_a_message_without_known_receiver()
     {
         $notifiable = new Notifiable();

@@ -43,6 +43,10 @@ class TwilioChannel
      */
     public function send($notifiable, Notification $notification)
     {
+        if (! $this->isEnabled()) {
+            return;
+        }
+
         try {
             $to = $this->getTo($notifiable, $notification);
             $message = $this->getMessage($notifiable, $notification);
@@ -86,6 +90,20 @@ class TwilioChannel
     protected function getMessage($notifiable, Notification $notification)
     {
         return $notification->toTwilio($notifiable);
+    }
+
+    /**
+     * Check if twilio is enabled.
+     *
+     * @return bool
+     */
+    protected function isEnabled()
+    {
+        if (is_null($this->twilio->config)) {
+            return true;
+        }
+
+        return $this->twilio->config->enabled();
     }
 
     /**

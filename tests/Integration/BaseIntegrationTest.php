@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace NotificationChannels\Twilio\Tests\Integration;
 
 use NotificationChannels\Twilio\TwilioProvider;
-use Orchestra\Testbench\TestCase;
+use PHPUnit\Framework\TestCase;
 
 abstract class BaseIntegrationTest extends TestCase
 {
