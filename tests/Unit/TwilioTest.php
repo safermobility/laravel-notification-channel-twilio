@@ -67,6 +67,10 @@ class TwilioTest extends MockeryTestCase
             ->once()
             ->andReturn(null);
 
+        $this->config->shouldReceive('isShortenUrlsEnabled')
+            ->once()
+            ->andReturn(false);
+
         $this->config->shouldReceive('getServiceSid')
             ->once()
             ->andReturn(null);
@@ -103,6 +107,10 @@ class TwilioTest extends MockeryTestCase
         $this->config->shouldReceive('getFrom')
             ->once()
             ->andReturn('+1234567890');
+
+        $this->config->shouldReceive('isShortenUrlsEnabled')
+            ->once()
+            ->andReturn(false);
 
         $this->config->shouldReceive('getServiceSid')
             ->once()
@@ -141,6 +149,10 @@ class TwilioTest extends MockeryTestCase
 
         $this->config->shouldNotReceive('getFrom');
 
+        $this->config->shouldReceive('isShortenUrlsEnabled')
+            ->once()
+            ->andReturn(false);
+
         $this->config->shouldReceive('getServiceSid')
             ->once()
             ->andReturn(null);
@@ -168,6 +180,10 @@ class TwilioTest extends MockeryTestCase
         $this->config->shouldReceive('getFrom')
             ->once()
             ->andReturn('+1234567890');
+
+        $this->config->shouldReceive('isShortenUrlsEnabled')
+            ->once()
+            ->andReturn(false);
 
         $this->config->shouldReceive('getServiceSid')
             ->once()
@@ -201,6 +217,10 @@ class TwilioTest extends MockeryTestCase
         $message->fallbackUrl('http://example.com');
         $message->fallbackMethod('PUT');
 
+        $this->config->shouldReceive('getDebugTo')
+            ->once()
+            ->andReturn('+1111111111');
+
         $this->twilioService->calls->shouldReceive('create')
             ->atLeast()->once()
             ->with('+1111111111', '+2222222222', [
@@ -232,6 +252,10 @@ class TwilioTest extends MockeryTestCase
         $this->config->shouldReceive('getFrom')
             ->once()
             ->andReturn(null);
+
+        $this->config->shouldReceive('isShortenUrlsEnabled')
+            ->once()
+            ->andReturn(false);
 
         $this->config->shouldReceive('getServiceSid')
             ->once()
@@ -269,6 +293,10 @@ class TwilioTest extends MockeryTestCase
         $this->config->shouldReceive('getDebugTo')
             ->once()
             ->andReturn($debugTo);
+
+        $this->config->shouldReceive('isShortenUrlsEnabled')
+            ->once()
+            ->andReturn(false);
 
         $this->config->shouldReceive('getServiceSid')
             ->once()

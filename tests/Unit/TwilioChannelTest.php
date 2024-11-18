@@ -31,6 +31,7 @@ class TwilioChannelTest extends MockeryTestCase
         parent::setUp();
 
         $this->twilio = Mockery::mock(Twilio::class);
+        $this->twilio->config = new TwilioConfig([]);
         $this->dispatcher = Mockery::mock(Dispatcher::class);
 
         $this->channel = new TwilioChannel($this->twilio, $this->dispatcher);

@@ -2,10 +2,10 @@
 
 namespace NotificationChannels\Twilio;
 
-readonly class TwilioConfig
+class TwilioConfig
 {
     public function __construct(
-        private array $config
+        private readonly array $config
     ) {}
 
     public function enabled(): bool
