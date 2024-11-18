@@ -4,6 +4,7 @@ All notable changes to `laravel-notification-channels/twilio` will be documented
 
 ## 4.0.0
 
+- Update PhpUnit to 10.5 and fixed all tests.
 - Bump `twilio/sdk` to 8.3
 - Improved types and use constructor property promotion everywhere.
 - Added Pint and fixed PHP syntax.
