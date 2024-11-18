@@ -2,15 +2,14 @@
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/laravel-notification-channels/twilio.svg?style=flat-square)](https://packagist.org/packages/laravel-notification-channels/twilio)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
-[![Build Status](https://img.shields.io/github/workflow/status/laravel-notification-channels/twilio/PHP?style=flat-square)](https://travis-ci.org/laravel-notification-channels/twilio)
-[![StyleCI](https://styleci.io/repos/65543339/shield)](https://styleci.io/repos/65543339)
+[![Build Status](https://github.com/onlime/laravel-notification-channels-twilio/actions/workflows/ci.yml/badge.svg)](https://github.com/onlime/laravel-notification-channels-twilio/actions/workflows/ci.yml)
 [![Quality Score](https://img.shields.io/scrutinizer/g/laravel-notification-channels/twilio.svg?style=flat-square)](https://scrutinizer-ci.com/g/laravel-notification-channels/twilio)
 [![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/laravel-notification-channels/twilio/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/laravel-notification-channels/twilio/?branch=master)
 [![Total Downloads](https://img.shields.io/packagist/dt/laravel-notification-channels/twilio.svg?style=flat-square)](https://packagist.org/packages/laravel-notification-channels/twilio)
 
-This package makes it easy to send [Twilio notifications](https://documentation.twilio.com/docs) with Laravel 5.5+, 6.x, 7.x, 8.x & 9.x
+This package makes it easy to send [Twilio notifications](https://documentation.twilio.com/docs) with Laravel 11.x
 
-You are viewing the `3.x` documentation. [Click here](https://github.com/laravel-notification-channels/twilio/tree/2.x) to view the `2.x` documentation.
+You are viewing the `4.x` documentation. [Click here](https://github.com/laravel-notification-channels/twilio/tree/master) to view the `3.x` documentation.
 
 ## Contents
 
@@ -200,6 +199,7 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 ## Credits
 
+- [Philip Iezzi (Pipo)](https://github.com/onlime)
 - [Gregorio Hernández Caso](https://github.com/gregoriohc)
 - [atymic](https://github.com/atymic)
 - [All Contributors](../../contributors)
