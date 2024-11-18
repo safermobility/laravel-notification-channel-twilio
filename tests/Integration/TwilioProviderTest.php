@@ -5,9 +5,10 @@ declare(strict_types=1);
 namespace NotificationChannels\Twilio\Tests\Integration;
 
 use NotificationChannels\Twilio\Exceptions\InvalidConfigException;
+use NotificationChannels\Twilio\Tests\IntegrationTestCase;
 use NotificationChannels\Twilio\TwilioChannel;
 
-class TwilioProviderTest extends BaseIntegrationTest
+class TwilioProviderTest extends IntegrationTestCase
 {
     public function testThatApplicationCannotCreateChannelWithoutConfig()
     {

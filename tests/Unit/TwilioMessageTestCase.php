@@ -5,7 +5,7 @@ namespace NotificationChannels\Twilio\Tests\Unit;
 use Mockery\Adapter\Phpunit\MockeryTestCase;
 use NotificationChannels\Twilio\TwilioMessage;
 
-abstract class TwilioMessageTest extends MockeryTestCase
+abstract class TwilioMessageTestCase extends MockeryTestCase
 {
     /** @var TwilioMessage */
     protected $message;

@@ -4,7 +4,7 @@ namespace NotificationChannels\Twilio\Tests\Unit;
 
 use NotificationChannels\Twilio\TwilioCallMessage;
 
-class TwilioCallMessageTest extends TwilioMessageTest
+class TwilioCallMessageTest extends TwilioMessageTestCase
 {
     /** @var TwilioCallMessage */
     protected $message;

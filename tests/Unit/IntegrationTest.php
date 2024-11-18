@@ -90,7 +90,7 @@ class IntegrationTest extends MockeryTestCase
 
         $config = new TwilioConfig([
             'from' => '+31612345678',
-            'ShortenUrls' => true,
+            'shorten_urls' => true,
         ]);
         $twilio = new Twilio($this->twilioService, $config);
         $channel = new TwilioChannel($twilio, $this->events);

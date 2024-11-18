@@ -4,7 +4,7 @@ namespace NotificationChannels\Twilio\Tests\Unit;
 
 use NotificationChannels\Twilio\TwilioSmsMessage;
 
-class TwilioSmsMessageTest extends TwilioMessageTest
+class TwilioSmsMessageTest extends TwilioMessageTestCase
 {
     public function setUp(): void
     {
