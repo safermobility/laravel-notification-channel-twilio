@@ -1,11 +1,11 @@
 # Twilio notifications channel for Laravel
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/laravel-notification-channels/twilio.svg?style=flat-square)](https://packagist.org/packages/laravel-notification-channels/twilio)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/onlime/laravel-twilio.svg?style=flat-square)](https://packagist.org/packages/onlime/laravel-twilio)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 [![Build Status](https://github.com/onlime/laravel-notification-channels-twilio/actions/workflows/ci.yml/badge.svg)](https://github.com/onlime/laravel-notification-channels-twilio/actions/workflows/ci.yml)
-[![Quality Score](https://img.shields.io/scrutinizer/g/laravel-notification-channels/twilio.svg?style=flat-square)](https://scrutinizer-ci.com/g/laravel-notification-channels/twilio)
-[![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/laravel-notification-channels/twilio/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/laravel-notification-channels/twilio/?branch=master)
-[![Total Downloads](https://img.shields.io/packagist/dt/laravel-notification-channels/twilio.svg?style=flat-square)](https://packagist.org/packages/laravel-notification-channels/twilio)
+[![Quality Score](https://img.shields.io/scrutinizer/g/onlime/laravel-twilio.svg?style=flat-square)](https://scrutinizer-ci.com/g/onlime/laravel-twilio)
+[![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/onlime/laravel-twilio/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/onlime/laravel-twilio/?branch=master)
+[![Total Downloads](https://img.shields.io/packagist/dt/onlime/laravel-twilio.svg?style=flat-square)](https://packagist.org/packages/onlime/laravel-twilio)
 
 This package makes it easy to send [Twilio notifications](https://documentation.twilio.com/docs) with Laravel 11.x
 
@@ -25,10 +25,10 @@ You are viewing the `4.x` documentation. [Click here](https://github.com/laravel
 
 ## Installation
 
-You can install the package via composer:
+You can install the package via Composer:
 
 ``` bash
-composer require laravel-notification-channels/twilio
+$ composer require onlime/laravel-twilio
 ```
 
 ### Configuration
@@ -79,9 +79,9 @@ If you're upgrading from version `2.x`, you'll need to make sure that your set e
 in the config section. None of the environment variable names have changed, but if you used different keys in your 
 `services.php` config then you'll need to update them to match the above, or publish the config file and change the
 `env` key.
- 
+
 You should also remove the old entry for `twilio` from your `services.php` config, since it's no longer used.
- 
+
 The main breaking change between `2.x` and `3.x` is that failed notification will now throw an exception unless they are
 in the list of ignored error codes (publish the config file to edit these).
 
@@ -191,7 +191,7 @@ $ composer test
 
 ## Security
 
-If you discover any security related issues, please email gregoriohc@gmail.com instead of using the issue tracker.
+If you discover any security related issues, please email pipo@onlime.ch instead of using the issue tracker.
 
 ## Contributing
 
