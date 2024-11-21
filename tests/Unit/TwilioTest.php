@@ -34,7 +34,7 @@ class TwilioTest extends MockeryTestCase
      */
     protected $config;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         parent::setUp();
 
