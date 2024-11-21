@@ -1,9 +1,9 @@
 # Twilio notifications channel for Laravel
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/laravel-notification-channels/twilio.svg?style=flat-square)](https://packagist.org/packages/laravel-notification-channels/twilio)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/onlime/laravel-twilio.svg?style=flat-square)](https://packagist.org/packages/onlime/laravel-twilio)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
-[![Build Status](https://github.com/onlime/laravel-notification-channels-twilio/actions/workflows/ci.yml/badge.svg)](https://github.com/onlime/laravel-notification-channels-twilio/actions/workflows/ci.yml)
-[![Total Downloads](https://img.shields.io/packagist/dt/laravel-notification-channels/twilio.svg?style=flat-square)](https://packagist.org/packages/laravel-notification-channels/twilio)
+[![Build Status](https://github.com/onlime/laravel-twilio/actions/workflows/ci.yml/badge.svg)](https://github.com/onlime/laravel-twilio/actions/workflows/ci.yml)
+[![Total Downloads](https://img.shields.io/packagist/dt/laravel-notification-channels/twilio.svg?style=flat-square)](https://packagist.org/packages/onlime/laravel-twilio)
 
 This package makes it easy to send [Twilio notifications](https://documentation.twilio.com/docs) with Laravel 11.x
 
@@ -23,10 +23,10 @@ You are viewing the `4.x` documentation. [Click here](https://github.com/laravel
 
 ## Installation
 
-You can install the package via composer:
+You can install the package via Composer:
 
 ``` bash
-composer require laravel-notification-channels/twilio
+$ composer require onlime/laravel-twilio
 ```
 
 ### Configuration
@@ -189,7 +189,7 @@ $ composer test
 
 ## Security
 
-If you discover any security related issues, please email gregoriohc@gmail.com instead of using the issue tracker.
+If you discover any security related issues, please email pipo@onlime.ch instead of using the issue tracker.
 
 ## Contributing
 
@@ -198,6 +198,7 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 ## Credits
 
 - [Philip Iezzi (Pipo)](https://github.com/onlime)
+- [Pascal Baljet](https://github.com/pascalbaljet)
 - [Gregorio Hernández Caso](https://github.com/gregoriohc)
 - [atymic](https://github.com/atymic)
 - [All Contributors](../../contributors)

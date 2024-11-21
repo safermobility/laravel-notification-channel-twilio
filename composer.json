@@ -16,6 +16,12 @@
     },
     "authors": [
         {
+            "name": "Philip Iezzi",
+            "email": "pipo@onlime.ch",
+            "homepage": "https://github.com/onlime",
+            "role": "Developer"
+        },
+        {
             "name": "Gregorio Hernández Caso",
             "email": "gregoriohc@gmail.com",
             "homepage": "https://github.com/gregoriohc",

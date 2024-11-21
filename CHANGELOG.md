@@ -4,6 +4,7 @@ All notable changes to `laravel-notification-channels/twilio` will be documented
 
 ## 4.0.0
 
+- Rebranded abandoned [`laravel-notification-channels/twilio`](https://github.com/laravel-notification-channels/twilio) to [`onlime/laravel-twilio`](https://github.com/onlime/laravel-twilio)
 - Added PHP Linting (Pint) to CI workflow
 - Additional tests to achieve 100% code coverage by @pascalbaljet
 - Update PhpUnit to 10.5 and fixed all tests.
