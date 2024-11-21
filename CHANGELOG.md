@@ -4,6 +4,8 @@ All notable changes to `laravel-notification-channels/twilio` will be documented
 
 ## 4.0.0
 
+- Added PHP Linting (Pint) to CI workflow
+- Additional tests to achieve 100% code coverage by @pascalbaljet
 - Update PhpUnit to 10.5 and fixed all tests.
 - Bump `twilio/sdk` to 8.3
 - Improved types and use constructor property promotion everywhere.
