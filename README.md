@@ -198,6 +198,7 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 ## Credits
 
 - [Philip Iezzi (Pipo)](https://github.com/onlime)
+- [Pascal Baljet](https://github.com/pascalbaljet)
 - [Gregorio Hernández Caso](https://github.com/gregoriohc)
 - [atymic](https://github.com/atymic)
 - [All Contributors](../../contributors)
