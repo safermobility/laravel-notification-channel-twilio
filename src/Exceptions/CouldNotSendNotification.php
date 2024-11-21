@@ -30,11 +30,4 @@ class CouldNotSendNotification extends \Exception
             method or a phone_number attribute to your notifiable.'
         );
     }
-
-    public static function missingAlphaNumericSender(): self
-    {
-        return new static(
-            'Notification was not sent. Missing `alphanumeric_sender` in config'
-        );
-    }
 }

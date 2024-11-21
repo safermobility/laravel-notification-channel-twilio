@@ -6,7 +6,7 @@ use NotificationChannels\Twilio\TwilioSmsMessage;
 
 class TwilioSmsMessageTest extends TwilioMessageTestCase
 {
-    public function setUp(): void
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -45,6 +45,15 @@ class TwilioSmsMessageTest extends TwilioMessageTestCase
         $message->sender('TestSender');
 
         $this->assertEquals('TestSender', $message->getFrom());
+    }
+
+    /** @test */
+    public function it_can_return_the_messaging_service_sid_if_set()
+    {
+        $message = TwilioSmsMessage::create('myMessage');
+        $message->messagingServiceSid('TestSid');
+
+        $this->assertEquals('TestSid', $message->getMessagingServiceSid());
     }
 
     /** @test */

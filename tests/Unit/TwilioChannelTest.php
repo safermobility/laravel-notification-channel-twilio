@@ -26,7 +26,7 @@ class TwilioChannelTest extends MockeryTestCase
     /** @var Dispatcher */
     protected $dispatcher;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -79,6 +79,22 @@ class TwilioChannelTest extends MockeryTestCase
     public function it_will_send_a_sms_message_to_the_result_of_the_route_method_of_the_notifiable()
     {
         $notifiable = new NotifiableWithMethod;
+        $notification = Mockery::mock(Notification::class);
+
+        $message = new TwilioSmsMessage('Message text');
+        $notification->shouldReceive('toTwilio')->andReturn($message);
+
+        $this->twilio->shouldReceive('sendMessage')
+            ->atLeast()->once()
+            ->with($message, '+1111111111', false);
+
+        $this->channel->send($notifiable, $notification);
+    }
+
+    /** @test */
+    public function it_will_send_a_sms_message_to_the_result_of_the_route_method_of_the_notifiable_if_it_uses_the_twilio_channel_explicitly()
+    {
+        $notifiable = new NotifiableWithTwilioChannel;
         $notification = Mockery::mock(Notification::class);
 
         $message = new TwilioSmsMessage('Message text');
@@ -238,6 +254,16 @@ class Notifiable
     public $phone_number = null;
 
     public function routeNotificationFor() {}
+}
+
+class NotifiableWithTwilioChannel
+{
+    public function routeNotificationFor(string $channel)
+    {
+        if ($channel === 'twilio') {
+            return '+1111111111';
+        }
+    }
 }
 
 class NotifiableWithMethod

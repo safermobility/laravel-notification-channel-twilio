@@ -67,9 +67,9 @@ class TwilioProvider extends ServiceProvider implements DeferrableProvider
     public function provides(): array
     {
         return [
+            TwilioChannel::class,
             TwilioConfig::class,
             TwilioService::class,
-            TwilioChannel::class,
         ];
     }
 }
