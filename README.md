@@ -3,8 +3,6 @@
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/laravel-notification-channels/twilio.svg?style=flat-square)](https://packagist.org/packages/laravel-notification-channels/twilio)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 [![Build Status](https://github.com/onlime/laravel-notification-channels-twilio/actions/workflows/ci.yml/badge.svg)](https://github.com/onlime/laravel-notification-channels-twilio/actions/workflows/ci.yml)
-[![Quality Score](https://img.shields.io/scrutinizer/g/laravel-notification-channels/twilio.svg?style=flat-square)](https://scrutinizer-ci.com/g/laravel-notification-channels/twilio)
-[![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/laravel-notification-channels/twilio/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/laravel-notification-channels/twilio/?branch=master)
 [![Total Downloads](https://img.shields.io/packagist/dt/laravel-notification-channels/twilio.svg?style=flat-square)](https://packagist.org/packages/laravel-notification-channels/twilio)
 
 This package makes it easy to send [Twilio notifications](https://documentation.twilio.com/docs) with Laravel 11.x
@@ -57,7 +55,7 @@ Run `php artisan vendor:publish --provider="NotificationChannels\Twilio\TwilioPr
 #### Suppressing specific errors or all errors
 
 Publish the config using the above command, and edit the `ignored_error_codes` array. You can get the list of
-exception codes from [the documentation](https://www.twilio.com/docs/api/errors). 
+exception codes from [the documentation](https://www.twilio.com/docs/api/errors).
 
 If you want to suppress all errors, you can set the option to `['*']`. The errors will not be logged but notification
 failed events will still be emitted.
@@ -75,13 +73,13 @@ We have dropped support for PHP < 8.2 and the minimum Laravel version is now 11.
 
 ## Upgrading from 2.x to 3.x
 
-If you're upgrading from version `2.x`, you'll need to make sure that your set environment variables match those above 
-in the config section. None of the environment variable names have changed, but if you used different keys in your 
+If you're upgrading from version `2.x`, you'll need to make sure that your set environment variables match those above
+in the config section. None of the environment variable names have changed, but if you used different keys in your
 `services.php` config then you'll need to update them to match the above, or publish the config file and change the
 `env` key.
- 
+
 You should also remove the old entry for `twilio` from your `services.php` config, since it's no longer used.
- 
+
 The main breaking change between `2.x` and `3.x` is that failed notification will now throw an exception unless they are
 in the list of ignored error codes (publish the config file to edit these).
 
