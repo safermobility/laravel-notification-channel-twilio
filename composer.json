@@ -1,5 +1,5 @@
 {
-    "name": "laravel-notification-channels/twilio",
+    "name": "onlime/laravel-twilio",
     "description": "Provides Twilio notification channel for Laravel",
     "keywords": [
         "laravel",
@@ -11,8 +11,8 @@
     ],
     "license": "MIT",
     "support": {
-        "issues": "https://github.com/laravel-notification-channels/twilio/issues",
-        "source": "https://github.com/laravel-notification-channels/twilio"
+        "issues": "https://github.com/onlime/laravel-twilio/issues",
+        "source": "https://github.com/onlime/laravel-twilio"
     },
     "authors": [
         {

@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to `laravel-notification-channels/twilio` will be documented in this file
+All notable changes to `onlime/laravel-twilio` will be documented in this file
 
 ## 4.0.0
 
