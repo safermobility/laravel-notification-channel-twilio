@@ -42,6 +42,15 @@ class TwilioProviderTest extends IntegrationTestCase
     }
 
     /** @test */
+    public function it_can_create_the_application_with_token_auth()
+    {
+        $this->app['config']->set('twilio-notification-channel.auth_token', 'token');
+        $this->app['config']->set('twilio-notification-channel.account_sid', '1234');
+
+        $this->assertInstanceOf(TwilioChannel::class, $this->app->get(TwilioChannel::class));
+    }
+
+    /** @test */
     public function it_provides_three_classes()
     {
         $provides = (new TwilioProvider($this->app))->provides();
