@@ -1,13 +1,11 @@
 # Twilio notifications channel for Laravel
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/onlime/laravel-twilio.svg)](https://packagist.org/packages/onlime/laravel-twilio)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/laravel-notification-channels/twilio.svg)](https://packagist.org/packages/laravel-notification-channels/twilio)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](LICENSE.md)
-[![Build Status](https://github.com/onlime/laravel-twilio/actions/workflows/ci.yml/badge.svg)](https://github.com/onlime/laravel-twilio/actions/workflows/ci.yml)
-[![Total Downloads](https://img.shields.io/packagist/dt/onlime/laravel-twilio.svg)](https://packagist.org/packages/onlime/laravel-twilio)
+[![Build Status](https://github.com/laravel-notification-channels/twilio/actions/workflows/ci.yml/badge.svg)](https://github.com/laravel-notification-channels/twilio/actions/workflows/ci.yml)
+[![Total Downloads](https://img.shields.io/packagist/dt/laravel-notification-channels/twilio.svg)](https://packagist.org/packages/laravel-notification-channels/twilio)
 
 This package makes it easy to send [Twilio notifications](https://documentation.twilio.com/docs) with Laravel 11.x
-
-You are viewing the `4.x` documentation. [Click here](https://github.com/laravel-notification-channels/twilio/tree/master) to view the `3.x` documentation.
 
 ## Contents
 
@@ -26,7 +24,7 @@ You are viewing the `4.x` documentation. [Click here](https://github.com/laravel
 You can install the package via Composer:
 
 ``` bash
-$ composer require onlime/laravel-twilio
+$ composer require laravel-notification-channels/twilio
 ```
 
 ### Configuration
