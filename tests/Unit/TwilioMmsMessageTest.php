@@ -4,13 +4,13 @@ namespace NotificationChannels\Twilio\Tests\Unit;
 
 use NotificationChannels\Twilio\TwilioMmsMessage;
 
-class TwilioMmsMessageTest extends TwilioMessageTest
+class TwilioMmsMessageTest extends TwilioMessageTestCase
 {
-    public function setUp(): void
+    protected function setUp(): void
     {
         parent::setUp();
 
-        $this->message = new TwilioMmsMessage();
+        $this->message = new TwilioMmsMessage;
     }
 
     /** @test */

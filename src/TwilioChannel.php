@@ -10,42 +10,26 @@ use NotificationChannels\Twilio\Exceptions\CouldNotSendNotification;
 
 class TwilioChannel
 {
-    /**
-     * @var Twilio
-     */
-    protected $twilio;
-
-    /**
-     * @var Dispatcher
-     */
-    protected $events;
-
-    /**
-     * TwilioChannel constructor.
-     *
-     * @param Twilio $twilio
-     * @param Dispatcher $events
-     */
-    public function __construct(Twilio $twilio, Dispatcher $events)
-    {
-        $this->twilio = $twilio;
-        $this->events = $events;
-    }
+    public function __construct(
+        protected Twilio $twilio,
+        protected Dispatcher $events
+    ) {}
 
     /**
      * Send the given notification.
      *
-     * @param mixed $notifiable
-     * @param Notification $notification
-     *
      * @return mixed
      * @throws Exception
      */
-    public function send($notifiable, Notification $notification)
+    public function send(mixed $notifiable, Notification $notification)
     {
+        if (! $this->isEnabled()) {
+            return;
+        }
+
         try {
             $to = $this->getTo($notifiable, $notification);
-            $message = $notification->toTwilio($notifiable);
+            $message = $this->getMessage($notifiable, $notification);
             $useSender = $this->canReceiveAlphanumericSender($notifiable);
 
             if (is_string($message)) {
@@ -76,10 +60,28 @@ class TwilioChannel
     }
 
     /**
+     * Get the message to send.
+     *
+     * @return mixed
+     */
+    protected function getMessage(mixed $notifiable, Notification $notification)
+    {
+        return $notification->toTwilio($notifiable);
+    }
+
+    /**
+     * Check if twilio is enabled.
+     */
+    protected function isEnabled(): bool
+    {
+        return $this->twilio->config->enabled() ?? true;
+    }
+
+    /**
      * Get the address to send a notification to.
      *
-     * @param mixed $notifiable
-     * @param Notification|null $notification
+     * @param  mixed  $notifiable
+     * @param  Notification|null  $notification
      *
      * @return mixed
      * @throws CouldNotSendNotification
@@ -102,7 +104,6 @@ class TwilioChannel
     /**
      * Get the alphanumeric sender.
      *
-     * @param $notifiable
      *
      * @return mixed|null
      * @throws CouldNotSendNotification

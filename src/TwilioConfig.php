@@ -4,15 +4,13 @@ namespace NotificationChannels\Twilio;
 
 class TwilioConfig
 {
-    /** @var array */
-    private $config;
+    public function __construct(
+        private readonly array $config
+    ) {}
 
-    /**
-     * @param array $config
-     */
-    public function __construct(array $config)
+    public function enabled(): bool
     {
-        $this->config = $config;
+        return $this->config['enabled'] ?? true;
     }
 
     public function usingUsernamePasswordAuth(): bool

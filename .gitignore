@@ -27,3 +27,6 @@ phpunit.phar
 
 # build
 build
+
+# laravel/pint
+.pint.cache.json

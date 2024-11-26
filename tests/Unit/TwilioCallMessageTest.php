@@ -4,16 +4,16 @@ namespace NotificationChannels\Twilio\Tests\Unit;
 
 use NotificationChannels\Twilio\TwilioCallMessage;
 
-class TwilioCallMessageTest extends TwilioMessageTest
+class TwilioCallMessageTest extends TwilioMessageTestCase
 {
     /** @var TwilioCallMessage */
     protected $message;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         parent::setUp();
 
-        $this->message = new TwilioCallMessage();
+        $this->message = new TwilioCallMessage;
     }
 
     /** @test */

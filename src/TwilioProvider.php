@@ -14,14 +14,12 @@ class TwilioProvider extends ServiceProvider implements DeferrableProvider
     /**
      * Bootstrap the application services.
      */
-    public function boot()
-    {
-    }
+    public function boot() {}
 
     /**
      * Register the application services.
      */
-    public function register()
+    public function register(): void
     {
         $this->mergeConfigFrom(__DIR__.'/../config/twilio-notification-channel.php', 'twilio-notification-channel');
 
@@ -65,15 +63,13 @@ class TwilioProvider extends ServiceProvider implements DeferrableProvider
 
     /**
      * Get the services provided by the provider.
-     *
-     * @return array
      */
     public function provides(): array
     {
         return [
+            TwilioChannel::class,
             TwilioConfig::class,
             TwilioService::class,
-            TwilioChannel::class,
         ];
     }
 }

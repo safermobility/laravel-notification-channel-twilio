@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace NotificationChannels\Twilio\Tests\Integration;
+namespace NotificationChannels\Twilio\Tests;
 
 use NotificationChannels\Twilio\TwilioProvider;
 use Orchestra\Testbench\TestCase;
 
-abstract class BaseIntegrationTest extends TestCase
+class IntegrationTestCase extends TestCase
 {
     protected function getPackageProviders($app)
     {

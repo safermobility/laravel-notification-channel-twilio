@@ -10,30 +10,18 @@ use Twilio\Rest\Client as TwilioService;
 
 class Twilio
 {
-    /** @var TwilioService */
-    protected $twilioService;
-
-    /** @var TwilioConfig */
-    public $config;
-
-    public function __construct(TwilioService $twilioService, TwilioConfig $config)
-    {
-        $this->twilioService = $twilioService;
-        $this->config = $config;
-    }
+    public function __construct(
+        protected TwilioService $twilioService,
+        public TwilioConfig $config
+    ) {}
 
     /**
-     * Send a TwilioMessage to the a phone number.
+     * Send a TwilioMessage to a phone number.
      *
-     * @param TwilioMessage $message
-     * @param string|null $to
-     * @param bool $useAlphanumericSender
-     *
-     * @return mixed
      * @throws TwilioException
      * @throws CouldNotSendNotification
      */
-    public function sendMessage(TwilioMessage $message, ?string $to, bool $useAlphanumericSender = false)
+    public function sendMessage(TwilioMessage $message, ?string $to, bool $useAlphanumericSender = false): CallInstance|MessageInstance
     {
         if ($message instanceof TwilioSmsMessage) {
             if ($useAlphanumericSender && $sender = $this->getAlphanumericSender()) {
@@ -53,10 +41,7 @@ class Twilio
     /**
      * Send an sms message using the Twilio Service.
      *
-     * @param TwilioSmsMessage $message
-     * @param string|null $to
      *
-     * @return MessageInstance
      * @throws CouldNotSendNotification
      * @throws TwilioException
      */
@@ -64,7 +49,7 @@ class Twilio
     {
         $debugTo = $this->config->getDebugTo();
 
-        if (!empty($debugTo)) {
+        if (! empty($debugTo)) {
             $to = $debugTo;
         }
 
@@ -77,7 +62,7 @@ class Twilio
         }
 
         if ($this->config->isShortenUrlsEnabled()) {
-            $params['ShortenUrls'] = "true";
+            $params['ShortenUrls'] = 'true';
         }
 
         if ($from = $this->getFrom($message)) {
@@ -110,10 +95,7 @@ class Twilio
     /**
      * Make a call using the Twilio Service.
      *
-     * @param TwilioCallMessage $message
-     * @param string|null $to
      *
-     * @return CallInstance
      * @throws TwilioException
      * @throws CouldNotSendNotification
      */
@@ -151,9 +133,6 @@ class Twilio
 
     /**
      * Get the from address from message, or config.
-     *
-     * @param TwilioMessage $message
-     * @return string|null
      */
     protected function getFrom(TwilioMessage $message): ?string
     {
@@ -162,9 +141,6 @@ class Twilio
 
     /**
      * Get the messaging service SID from message, or config.
-     *
-     * @param TwilioSmsMessage $message
-     * @return string|null
      */
     protected function getMessagingServiceSid(TwilioSmsMessage $message): ?string
     {
@@ -173,21 +149,13 @@ class Twilio
 
     /**
      * Get the alphanumeric sender from config, if one exists.
-     *
-     * @return string|null
      */
     protected function getAlphanumericSender(): ?string
     {
         return $this->config->getAlphanumericSender();
     }
 
-    /**
-     * @param array $params
-     * @param TwilioMessage $message
-     * @param array $optionalParams
-     * @return Twilio
-     */
-    protected function fillOptionalParams(&$params, $message, $optionalParams): self
+    protected function fillOptionalParams(array &$params, TwilioMessage $message, array $optionalParams): self
     {
         foreach ($optionalParams as $optionalParam) {
             if ($message->$optionalParam) {
