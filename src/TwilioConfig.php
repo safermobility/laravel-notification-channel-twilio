@@ -8,7 +8,7 @@ class TwilioConfig
         private readonly array $config
     ) {}
 
-    public function enabled()
+    public function enabled(): bool
     {
         return $this->config['enabled'] ?? true;
     }
