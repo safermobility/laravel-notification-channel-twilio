@@ -26,8 +26,6 @@ class TwilioConfigTest extends TestCase
         $config = $this->config();
 
         $this->assertNull($config->getAuthToken());
-        $this->assertNull($config->getUsername());
-        $this->assertNull($config->getPassword());
         $this->assertNull($config->getAccountSid());
         $this->assertNull($config->getFrom());
         $this->assertNull($config->getAlphanumericSender());
@@ -40,8 +38,6 @@ class TwilioConfigTest extends TestCase
     {
         $config = $this->config([
             'auth_token' => 'valid-auth-token',
-            'username' => 'valid-username',
-            'password' => 'valid-password',
             'account_sid' => 'valid-account-sid',
             'from' => 'valid-from',
             'alphanumeric_sender' => 'valid-alphanumeric-sender',
@@ -50,8 +46,6 @@ class TwilioConfigTest extends TestCase
         ]);
 
         $this->assertEquals('valid-auth-token', $config->getAuthToken());
-        $this->assertEquals('valid-username', $config->getUsername());
-        $this->assertEquals('valid-password', $config->getPassword());
         $this->assertEquals('valid-account-sid', $config->getAccountSid());
         $this->assertEquals('valid-from', $config->getFrom());
         $this->assertEquals('valid-alphanumeric-sender', $config->getAlphanumericSender());
@@ -100,25 +94,5 @@ class TwilioConfigTest extends TestCase
 
         // Both values set...
         $this->assertTrue($this->config(['auth_token' => 'valid', 'account_sid' => 'valid'])->usingTokenAuth());
-    }
-
-    /** @test */
-    public function it_returns_a_boolean_wether_username_password_auth_is_used_or_not()
-    {
-        // No values set...
-        $this->assertFalse($this->config()->usingUsernamePasswordAuth());
-
-        // One value set...
-        $this->assertFalse($this->config(['username' => 'valid'])->usingUsernamePasswordAuth());
-        $this->assertFalse($this->config(['password' => 'valid'])->usingUsernamePasswordAuth());
-        $this->assertFalse($this->config(['account_sid' => 'valid'])->usingUsernamePasswordAuth());
-
-        // Two values set...
-        $this->assertFalse($this->config(['username' => 'valid', 'password' => 'valid'])->usingUsernamePasswordAuth());
-        $this->assertFalse($this->config(['username' => 'valid', 'account_sid' => 'valid'])->usingUsernamePasswordAuth());
-        $this->assertFalse($this->config(['password' => 'valid', 'account_sid' => 'valid'])->usingUsernamePasswordAuth());
-
-        // All values set...
-        $this->assertTrue($this->config(['username' => 'valid', 'password' => 'valid', 'account_sid' => 'valid'])->usingUsernamePasswordAuth());
     }
 }
