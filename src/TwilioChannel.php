@@ -17,11 +17,8 @@ class TwilioChannel
 
     /**
      * Send the given notification.
-     *
-     * @return mixed
-     * @throws Exception
      */
-    public function send(mixed $notifiable, Notification $notification)
+    public function send(mixed $notifiable, Notification $notification): mixed
     {
         if (! $this->isEnabled()) {
             return;
@@ -75,15 +72,8 @@ class TwilioChannel
 
     /**
      * Get the address to send a notification to.
-     *
-     * @param mixed $notifiable
-     * @param Notification|null $notification
-     * @param TwilioMessage $message
-     *
-     * @return mixed
-     * @throws CouldNotSendNotification
      */
-    protected function getTo($notifiable, $notification = null, $message = null)
+    protected function getTo(mixed $notifiable, ?Notification $notification = null, TwilioMessage $message = null): ?mixed
     {
         if ($message->getTo()) {
             return $message->getTo();
@@ -103,11 +93,8 @@ class TwilioChannel
 
     /**
      * Get the alphanumeric sender.
-     *
-     * @return mixed|null
-     * @throws CouldNotSendNotification
      */
-    protected function canReceiveAlphanumericSender($notifiable)
+    protected function canReceiveAlphanumericSender($notifiable): ?mixed
     {
         return method_exists($notifiable, 'canReceiveAlphanumericSender') &&
             $notifiable->canReceiveAlphanumericSender();
