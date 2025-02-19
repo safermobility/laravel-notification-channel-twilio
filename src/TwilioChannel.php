@@ -21,7 +21,7 @@ class TwilioChannel
     public function send(mixed $notifiable, Notification $notification): mixed
     {
         if (! $this->isEnabled()) {
-            return;
+            return null;
         }
 
         try {
@@ -40,7 +40,7 @@ class TwilioChannel
 
             // Suppress notification if notifier address is found to be NULL
             if (!$to) {
-                return;
+                return null;
             }
 
             return $this->twilio->sendMessage($message, $to, $useSender);
@@ -55,7 +55,7 @@ class TwilioChannel
             $this->events->dispatch($event);
 
             if ($this->twilio->config->isIgnoredErrorCode($exception->getCode())) {
-                return;
+                return null;
             }
 
             throw $exception;
