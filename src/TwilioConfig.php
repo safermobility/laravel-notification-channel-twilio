@@ -71,4 +71,14 @@ class TwilioConfig
     {
         return $this->config['shorten_urls'] ?? false;
     }
+
+    public function getRetryTimes(): int
+    {
+        return $this->config['retry_times'] ?? 3;
+    }
+
+    public function getRetryDelay(): int
+    {
+        return $this->config['retry_delay'] ?? 1000;
+    }
 }

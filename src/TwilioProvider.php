@@ -31,12 +31,24 @@ class TwilioProvider extends ServiceProvider implements DeferrableProvider
             return new TwilioConfig($this->app['config']['twilio-notification-channel']);
         });
 
+        $this->app->singleton(LaravelHttpClient::class, function (Application $app) {
+            /** @var TwilioConfig $config */
+            $config = $app->make(TwilioConfig::class);
+
+            return new LaravelHttpClient($config->getRetryTimes(), $config->getRetryDelay());
+        });
+
         $this->app->singleton(TwilioService::class, function (Application $app) {
             /** @var TwilioConfig $config */
             $config = $app->make(TwilioConfig::class);
 
             if ($config->usingTokenAuth()) {
-                return new TwilioService($config->getSid(), $config->getAuthToken(), $config->getAccountSid());
+                return new TwilioService(
+                    username: $config->getSid(),
+                    password: $config->getAuthToken(),
+                    accountSid: $config->getAccountSid(),
+                    httpClient: $app->make(LaravelHttpClient::class),
+                );
             }
 
             throw InvalidConfigException::missingConfig();
@@ -63,6 +75,7 @@ class TwilioProvider extends ServiceProvider implements DeferrableProvider
     public function provides(): array
     {
         return [
+            LaravelHttpClient::class,
             TwilioChannel::class,
             TwilioConfig::class,
             TwilioService::class,
