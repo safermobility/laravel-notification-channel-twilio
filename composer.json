@@ -14,15 +14,36 @@
         "issues": "https://github.com/safermobility/laravel-notification-channel-twilio/issues",
         "source": "https://github.com/safermobility/laravel-notification-channel-twilio"
     },
+    "authors": [
+        {
+            "name": "Philip Iezzi",
+            "email": "pipo@onlime.ch",
+            "homepage": "https://github.com/onlime",
+            "role": "Developer"
+        },
+        {
+            "name": "Gregorio Hernández Caso",
+            "email": "gregoriohc@gmail.com",
+            "homepage": "https://github.com/gregoriohc",
+            "role": "Developer"
+        },
+        {
+            "name": "atymic",
+            "email": "atymicq@gmail.com",
+            "homepage": "https://atymic.dev",
+            "role": "Developer"
+        }
+    ],
     "require": {
         "php": "^8.2",
-        "twilio/sdk": "^7.16 || ^8.3",
-        "illuminate/notifications": "^11.0",
-        "illuminate/support": "^11.0",
         "illuminate/events": "^11.0",
-        "illuminate/queue": "^11.0"
+        "illuminate/notifications": "^11.0",
+        "illuminate/queue": "^11.0",
+        "illuminate/support": "^11.0",
+        "twilio/sdk": "^7.16 || ^8.3"
     },
     "require-dev": {
+        "laravel/pint": "^1.21",
         "mockery/mockery": "^1.3",
         "orchestra/testbench": "^9.0",
         "phpunit/phpunit": "^10.5"
