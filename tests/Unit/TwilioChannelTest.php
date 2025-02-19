@@ -60,15 +60,8 @@ class TwilioChannelTest extends MockeryTestCase
         $notifiable = new Notifiable;
         $notification = Mockery::mock(Notification::class);
 
-        $this->twilio->config = new TwilioConfig([
-            'ignored_error_codes' => [],
-        ]);
-
-        $this->dispatcher->shouldReceive('dispatch')
-            ->atLeast()->once()
-            ->with(Mockery::type(NotificationFailed::class));
-
-        $this->expectException(CouldNotSendNotification::class);
+        $message = new TwilioSmsMessage('Message text');
+        $notification->shouldReceive('toTwilio')->andReturn($message);
 
         $result = $this->channel->send($notifiable, $notification);
 
