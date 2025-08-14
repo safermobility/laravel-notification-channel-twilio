@@ -7,6 +7,7 @@ use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Http\Client\RequestException;
 use Illuminate\Support\Facades\Http;
+use Twilio\AuthStrategy\AuthStrategy;
 use Twilio\Exceptions\HttpException;
 use Twilio\Http\Client;
 use Twilio\Http\File;
@@ -23,7 +24,7 @@ class LaravelHttpClient implements Client
         string $method, string $url,
         array $params = [], array $data = [], array $headers = [],
         ?string $user = null, ?string $password = null,
-        ?int $timeout = null
+        ?int $timeout = null, ?AuthStrategy $authStrategy = null
     ): Response
     {
         $request = Http::withoutRedirecting();
@@ -52,6 +53,8 @@ class LaravelHttpClient implements Client
 
         if ($user && $password) {
             $request->withBasicAuth($user, $password);
+        } elseif ($authStrategy) {
+            $request->withHeader('Authorization', $authStrategy->getAuthString());
         }
 
         if ($timeout !== null) {
