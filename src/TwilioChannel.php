@@ -73,7 +73,7 @@ class TwilioChannel
     /**
      * Get the address to send a notification to.
      */
-    protected function getTo(mixed $notifiable, ?Notification $notification = null, TwilioMessage $message = null): mixed
+    protected function getTo(mixed $notifiable, ?Notification $notification = null, ?TwilioMessage $message = null): mixed
     {
         if ($message->getTo()) {
             return $message->getTo();
