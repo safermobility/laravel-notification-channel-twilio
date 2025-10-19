@@ -68,12 +68,11 @@ class LaravelHttpClient implements Client
         if ($method === 'POST' || $method === 'PUT') {
             $request->asForm();
 
-            if ($this->hasFile($data)) {
-                $this->buildMultipartBody($request, $data);
-            }
+            $data = $this->attachAndFilterFiles($request, $data);
         }
 
-        $request->withHeaders($headers);
+        // Filter out Twilio's 'Content-Type' header, since the HTTP Client needs to set it and we don't want it duplicated
+        $request->withHeaders(collect($headers)->filter(fn ($value, $key) => $key !== 'Content-Type')->all());
 
         try {
             $response = (match(strtoupper($method)) {
@@ -91,24 +90,17 @@ class LaravelHttpClient implements Client
         }
     }
 
-    private function hasFile(array $data): bool {
-        foreach ($data as $value) {
-            if ($value instanceof File) {
-                return true;
-            }
+    /**
+     * If there are any files in the input data, attach them.
+     *
+     * @return array All non-File data
+     */
+    private function attachAndFilterFiles(PendingRequest $request, array $data) : array {
+        [$attachments, $other] = collect($data)->partition(fn ($value) => $value instanceof File);
+        foreach ($attachments as $key => $value) {
+            $type = $value->getContentType();
+            $request->attach($key, $value->getContents(), $value->getFileName(), $type ? ['Content-Type' => $type] : []);
         }
-
-        return false;
-    }
-
-    private function buildMultipartBody(PendingRequest $request, array $data) {
-        foreach ($data as $key => $value) {
-            if ($value instanceof File) {
-                $type = $value->getContentType();
-                $request->attach($key, $value->getContents(), $value->getFileName(), $type ? ['Content-Type' => $type] : []);
-            } else {
-                $request->attach($key, $value);
-            }
-        }
+        return $other->all();
     }
 }
