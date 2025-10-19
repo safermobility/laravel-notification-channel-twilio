@@ -66,15 +66,24 @@ class LaravelHttpClient implements Client
         }
 
         if ($method === 'POST' || $method === 'PUT') {
+            $request->asForm();
+
             if ($this->hasFile($data)) {
                 $this->buildMultipartBody($request, $data);
-            } else {
-                $request->asForm()->withOptions(['form_params' => $data]);
             }
         }
 
+        $request->withHeaders($headers);
+
         try {
-            $response = $request->withHeaders($headers)->send($method, $url)->throw();
+            $response = (match(strtoupper($method)) {
+                'GET' => $request->get($url, $data),
+                'HEAD' => $request->head($url, $data),
+                'POST' => $request->post($url, $data),
+                'PATCH' => $request->patch($url, $data),
+                'PUT' => $request->put($url, $data),
+                'DELETE' => $request->delete($url, $data),
+            })->throw();
 
             return new Response($response->status(), $response->body(), $response->headers());
         } catch (Exception $exception) {
