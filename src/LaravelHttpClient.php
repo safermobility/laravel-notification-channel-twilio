@@ -52,7 +52,8 @@ class LaravelHttpClient implements Client
                     }
 
                     return false;
-                }
+                },
+                throw: false,
             );
         }
 
