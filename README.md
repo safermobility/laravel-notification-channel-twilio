@@ -1,9 +1,9 @@
 # Twilio notifications channel for Laravel
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/laravel-notification-channels/twilio.svg)](https://packagist.org/packages/laravel-notification-channels/twilio)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/safermobility/laravel-notification-channel-twilio.svg)](https://packagist.org/packages/safermobility/laravel-notification-channel-twilio)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](LICENSE.md)
-[![Build Status](https://github.com/laravel-notification-channels/twilio/actions/workflows/ci.yml/badge.svg)](https://github.com/laravel-notification-channels/twilio/actions/workflows/ci.yml)
-[![Total Downloads](https://img.shields.io/packagist/dt/laravel-notification-channels/twilio.svg)](https://packagist.org/packages/laravel-notification-channels/twilio)
+[![Build Status](https://github.com/safermobility/laravel-notification-channel-twilio/actions/workflows/ci.yml/badge.svg)](https://github.com/safermobility/laravel-notification-channel-twilio/actions/workflows/ci.yml)
+[![Total Downloads](https://img.shields.io/packagist/dt/safermobility/laravel-notification-channel-twilio.svg)](https://packagist.org/packages/safermobility/laravel-notification-channel-twilio)
 
 This package makes it easy to send [Twilio notifications](https://documentation.twilio.com/docs) with Laravel 11.x
 
