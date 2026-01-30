@@ -82,11 +82,27 @@ class Twilio
             'maxPrice',
             'provideFeedback',
             'validityPeriod',
+            'attempt',
+            'contentRetention',
+            'addressRetention',
+            'smartEncoded',
+            'persistentAction',
+            'scheduleType',
+            'sendAt',
+            'sendAsMms',
+            'riskCheck',
         ]);
 
         if ($message instanceof TwilioMmsMessage) {
             $this->fillOptionalParams($params, $message, [
                 'mediaUrl',
+            ]);
+        }
+
+        if ($message instanceof TwilioContentTemplateMessage) {
+            $this->fillOptionalParams($params, $message, [
+                'contentSid',
+                'contentVariables',
             ]);
         }
 
