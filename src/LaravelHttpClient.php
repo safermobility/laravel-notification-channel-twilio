@@ -13,6 +13,11 @@ use Twilio\Http\Client;
 use Twilio\Http\File;
 use Twilio\Http\Response;
 
+/**
+ * An HTTP Client for Twilio that uses Laravel's built-in HTTP Client features.
+ *
+ * Based on https://github.com/twilio/twilio-php/blob/8.10.1/src/Twilio/Http/GuzzleClient.php
+ */
 class LaravelHttpClient implements Client
 {
     public function __construct(
@@ -82,11 +87,17 @@ class LaravelHttpClient implements Client
                 'PATCH' => $request->patch($url, $data),
                 'PUT' => $request->put($url, $data),
                 'DELETE' => $request->delete($url, $data),
-            })->throw();
+            });
 
-            return new Response($response->status(), $response->body(), $response->headers());
-        } catch (Exception $exception) {
-            throw new HttpException('Unable to complete the HTTP request', 0, $exception);
+            // If the API call was successful (2xx), was a client error (4xx), or was a server error (5xx), let the
+            // Twilio SDK handle it. If it's anything else, we have no idea what is going on so throw an exception.
+            if ($response->successful() || $response->failed()) {
+                return new Response($response->status(), $response->body(), $response->headers());
+            } else {
+                throw new HttpException('Unexpected result from HTTP request', $response->status());
+            }
+        } catch (\Exception $e) {
+            throw new HttpException('Unable to complete the HTTP request', 0, $e);
         }
     }
 

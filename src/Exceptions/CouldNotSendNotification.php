@@ -38,11 +38,6 @@ class CouldNotSendNotification extends \Exception
         );
     }
 
-    public static function serviceRespondedWithAnError($exception, $message = null)
-    {
-        return new static('Could Not Send SMS : '.$exception->getMessage() . ' message: ' . $message, $exception->getCode());
-    }
-
     public static function invalidAuth(): self
     {
         return new static(

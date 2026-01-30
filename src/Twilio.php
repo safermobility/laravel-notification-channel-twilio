@@ -90,12 +90,7 @@ class Twilio
             ]);
         }
 
-        try {
-            return $this->twilioService->messages->create($to, $params);
-        } catch (Throwable $e) {
-            report($e);
-            throw CouldNotSendNotification::serviceRespondedWithAnError($e, 'Fail');
-        }
+        return $this->twilioService->messages->create($to, $params);
     }
 
     /**
